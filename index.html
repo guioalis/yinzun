@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时音准监控</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>实时音准监控</h1>
+        
+        <div class="control-panel">
+            <button id="startButton" class="btn">开始监听</button>
+            <button id="stopButton" class="btn" disabled>停止</button>
+            <select id="referenceNote" class="select">
+                <option value="-1">自动检测</option>
+                <option value="0">C (Do)</option>
+                <option value="1">C# (Do#)</option>
+                <option value="2">D (Re)</option>
+                <option value="3">D# (Re#)</option>
+                <option value="4">E (Mi)</option>
+                <option value="5">F (Fa)</option>
+                <option value="6">F# (Fa#)</option>
+                <option value="7">G (Sol)</option>
+                <option value="8">G# (Sol#)</option>
+                <option value="9">A (La)</option>
+                <option value="10">A# (La#)</option>
+                <option value="11">B (Si)</option>
+            </select>
+        </div>
+        
+        <div class="song-upload-panel">
+            <h2>导入歌曲</h2>
+            <div class="upload-container">
+                <input type="file" id="songFileInput" accept="audio/*" class="file-input" />
+                <label for="songFileInput" class="file-label">选择音频文件</label>
+                <span id="fileName" class="file-name">未选择文件</span>
+            </div>
+            <div class="audio-controls">
+                <audio id="audioPlayer" controls></audio>
+                <div class="player-controls">
+                    <button id="playButton" class="btn player-btn" disabled>播放</button>
+                    <button id="pauseButton" class="btn player-btn" disabled>暂停</button>
+                    <button id="analyzeButton" class="btn player-btn" disabled>分析歌曲</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <div class="current-note">
+                <div class="note-display">--</div>
+                <div class="frequency-display">0 Hz</div>
+            </div>
+            
+            <div class="tuner">
+                <div class="tuner-scale">
+                    <div class="tuner-marker left">♭</div>
+                    <div class="tuner-marker center">●</div>
+                    <div class="tuner-marker right">♯</div>
+                </div>
+                <div class="tuner-needle"></div>
+            </div>
+            
+            <div class="waveform">
+                <canvas id="waveformCanvas"></canvas>
+            </div>
+        </div>
+        
+        <div class="feedback">
+            <div class="accuracy-meter">
+                <div class="accuracy-label">音准准确度</div>
+                <div class="accuracy-bar">
+                    <div class="accuracy-fill"></div>
+                </div>
+                <div class="accuracy-value">0%</div>
+            </div>
+            <div class="feedback-message">请点击"开始监听"按钮开始检测音准</div>
+        </div>
+    </div>
+    
+    <script src="pitch-detection.js"></script>
+    <script src="audio-analyzer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

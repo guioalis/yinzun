@@ -1,0 +1,286 @@
+/* 实时音准监控应用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* 控制面板样式 */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+/* 可视化区域样式 */
+.visualization {
+    margin-bottom: 30px;
+}
+
+.current-note {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.note-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.frequency-display {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* 歌曲上传面板样式 */
+.song-upload-panel {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.song-upload-panel h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 20px;
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.file-label:hover {
+    background-color: #2980b9;
+}
+
+.file-name {
+    margin-left: 10px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.audio-controls {
+    margin-top: 15px;
+}
+
+#audioPlayer {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.player-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.player-btn {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* 调音器样式 */
+.tuner {
+    position: relative;
+    height: 60px;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.tuner-scale {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100%;
+    align-items: center;
+}
+
+.tuner-marker {
+    font-size: 24px;
+    z-index: 1;
+}
+
+.tuner-marker.left {
+    color: #e74c3c;
+}
+
+.tuner-marker.center {
+    color: #2ecc71;
+}
+
+.tuner-marker.right {
+    color: #e74c3c;
+}
+
+.tuner-needle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: #3498db;
+    transform: translateX(-50%);
+    transition: left 0.2s;
+}
+
+/* 波形图样式 */
+.waveform {
+    height: 150px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#waveformCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 反馈区域样式 */
+.feedback {
+    text-align: center;
+}
+
+.accuracy-meter {
+    margin-bottom: 15px;
+}
+
+.accuracy-label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #7f8c8d;
+}
+
+.accuracy-bar {
+    height: 20px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.accuracy-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #2ecc71;
+    transition: width 0.5s;
+}
+
+.accuracy-value {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #2c3e50;
+}
+
+.feedback-message {
+    font-size: 18px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    display: inline-block;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin-top: 10px;
+    }
+    
+    .control-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn, .select {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .note-display {
+        font-size: 36px;
+    }
+    
+    .waveform {
+        height: 100px;
+    }
+}
